@@ -1,5 +1,11 @@
 <?php include('components/header.php');
-// include('php/query.php')
+if (isset($_GET['cId'])){
+    $id = $_GET['cId'];
+    $query = $pdo -> prepare("select * from category where id = :pid");
+    $query ->bindParam("pid,$id");
+    $query ->execute();
+    $category = $query->fetch(PDO::FETCH_ASSOC);
+}
 ?>
 
  <!-- Blank Start -->
